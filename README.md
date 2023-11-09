@@ -1,0 +1,3 @@
+- Header - search feature
+- Body - Displays all lists
+- Footer - Big Add new icon

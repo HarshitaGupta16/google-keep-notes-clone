@@ -1,0 +1,43 @@
+.create-note-box {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 5px;
+  border: 1px solid #e0e0e0;
+  width: 40%;
+  margin: auto;
+}
+
+.title {
+  padding: 12px;
+  width: 90%;
+  font-size: 16px;
+  border: none;
+}
+
+.description {
+  width: 90%;
+  padding: 12px;
+  border: none;
+}
+
+.title:focus-visible {
+  outline: none;
+}
+
+.description:focus-visible {
+  outline: none;
+}
+
+.description::placeholder {
+  color: rgba(0, 0, 0, 0.702);
+}
+
+.footer-btn {
+  border: 1px solid #e0e0e0;
+  background: none;
+  padding: 5px 15px;
+  cursor: pointer;
+  margin-right: 2px;
+}

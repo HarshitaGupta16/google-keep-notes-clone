@@ -1,0 +1,13 @@
+.box {
+  border: 1px solid #e0e0e0;
+  width: 40%;
+  padding: 12px;
+  border-radius: 10px;
+  font-family: "Google Sans", Roboto, Arial, sans-serif;
+  color: rgba(0, 0, 0, 0.702);
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  cursor: pointer;
+}
