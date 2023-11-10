@@ -12,3 +12,12 @@
 .note-description {
   white-space: pre-wrap;
 }
+
+.delete-note {
+  color: black !important;
+  text-align: center;
+  font-weight: bold;
+  margin-top: 10px;
+  font-size: larger;
+  cursor: pointer;
+}
