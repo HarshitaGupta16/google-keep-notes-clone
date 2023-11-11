@@ -12,6 +12,8 @@ const Body = () => {
 
   const notes = useSelector((state) => state.notes);
 
+  localStorage.setItem("notes", JSON.stringify(notes.map((note) => note)));
+
   return (
     <div>
       {showCreateNote ? (
@@ -29,7 +31,7 @@ const Body = () => {
       <div
         style={{ display: "flex", justifyContent: "center", flexWrap: "wrap" }}
       >
-        {notes.map((note) => (
+        {notes?.map((note) => (
           <DisplayNote note={note} key={note} />
         ))}
       </div>

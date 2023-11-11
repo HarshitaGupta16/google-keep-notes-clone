@@ -20,4 +20,13 @@
   margin-top: 10px;
   font-size: larger;
   cursor: pointer;
+  width: 35px;
+  margin-right: 10px;
+}
+
+.edit-note {
+  cursor: pointer;
+  height: 30px;
+  margin-top: 10px;
+  width: 35px;
 }
