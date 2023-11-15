@@ -10,6 +10,8 @@ const CreateNote = ({ handleClick }) => {
 
   const createNoteHandler = () => {
     dispatch(createNote({ title, description }));
+    setTitle("");
+    setDescription("");
   };
 
   return (
@@ -18,11 +20,13 @@ const CreateNote = ({ handleClick }) => {
         placeholder="Title"
         className="title"
         onChange={(e) => setTitle(e.target.value)}
+        value={title}
       />
       <textarea
         className="description"
         placeholder="Take a note..."
         onChange={(e) => setDescription(e.target.value)}
+        value={description}
       />
       <div style={{ display: "flex" }}>
         <button className="footer-btn" onClick={createNoteHandler}>
