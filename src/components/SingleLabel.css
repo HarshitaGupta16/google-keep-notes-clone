@@ -1,0 +1,21 @@
+.label-name-edit {
+  display: flex;
+  justify-content: space-between;
+  width: 67%;
+}
+
+.edit-label {
+  color: darkslategray;
+  cursor: pointer;
+  padding: 5px 8px;
+}
+
+.edit-label:hover {
+  background-color: rgb(216, 209, 209);
+  border-radius: 50%;
+}
+
+.delete-icon {
+  color: darkslategray;
+  cursor: pointer;
+}

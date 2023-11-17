@@ -1,0 +1,116 @@
+.container {
+  background-color: rgb(0, 0, 0, 0.54) !important;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+  position: absolute;
+  justify-content: center;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.dialog {
+  height: 250px;
+  width: 400px;
+  background-color: white;
+  font-family: "Google Sans", Roboto, Arial, sans-serif;
+  z-index: 9999;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+}
+
+.dialog-heading {
+  font-weight: bold;
+  padding: 10px;
+  margin: 20px;
+  color: #202124;
+}
+
+.dialog-input {
+  margin-bottom: 20px;
+  margin-left: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.close-icon {
+  font-size: 25px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: darkslategrey;
+}
+
+.label-input {
+  border-bottom: 1px solid gray;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  margin: 0 20px;
+  font-size: 15px;
+}
+
+.tick-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: darkslategray;
+}
+
+.label-input:focus-visible {
+  outline: none;
+}
+
+.label-input::placeholder {
+  color: darkslategray;
+}
+
+.close-icon:hover {
+  background-color: rgb(227, 215, 215);
+  border-radius: 50%;
+}
+
+.tick-icon:hover {
+  background-color: rgb(227, 215, 215);
+  border-radius: 50%;
+}
+
+.list-icon {
+  margin-right: 20px;
+}
+
+.done-btn {
+  margin-right: 30px;
+  padding: 8px 15px;
+  border: none;
+  cursor: pointer;
+  align-self: flex-end;
+}
+
+.done-btn:hover {
+  background-color: rgb(227, 215, 215);
+}
+
+.add-icon {
+  font-size: 25px;
+  margin-right: 20px;
+  color: darkslategrey;
+  padding: 0 6px;
+}
+
+.add-dialog-heading {
+  margin-bottom: 20px;
+  margin-left: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.add-icon:hover {
+  background-color: rgb(227, 215, 215);
+  border-radius: 50%;
+}

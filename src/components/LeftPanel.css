@@ -1,0 +1,7 @@
+.left-panel {
+  border-right: 1px solid gray;
+  width: 10%;
+  height: 100%vh;
+  padding: 20px;
+  margin: 0;
+}

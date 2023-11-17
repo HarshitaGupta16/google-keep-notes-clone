@@ -1,0 +1,11 @@
+.list {
+  margin-top: 30px;
+}
+
+.list-item {
+  list-style: none;
+}
+
+.right-arrow {
+  margin-right: 10px;
+}
