@@ -22,6 +22,8 @@
   cursor: pointer;
   width: 35px;
   margin-right: 10px;
+  border: none;
+  background: none;
 }
 
 .edit-note {
@@ -29,4 +31,29 @@
   height: 30px;
   margin-top: 10px;
   width: 35px;
+  border: none;
+  background: none;
+}
+
+.label-name {
+  background-color: rgba(0, 0, 0, 0.08);
+  padding: 5px 10px;
+  margin: 0 5px;
+  border-radius: 15px;
+  cursor: pointer;
+  margin-top: 2px;
+}
+
+.label-padding {
+  padding: 5px 2px 5px 10px;
+}
+
+.delete-note:hover {
+  background-color: rgb(207, 209, 211);
+  border-radius: 50%;
+}
+
+.edit-note:hover {
+  background-color: rgb(207, 209, 211);
+  border-radius: 50%;
 }

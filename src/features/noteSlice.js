@@ -17,25 +17,37 @@ export const noteSlice = createSlice({
         id: nanoid(),
         title: action.payload.title,
         description: action.payload.description,
+        labelIds: action.payload?.selectedLabelIds,
       };
       state.notes.push(note);
     },
 
     deleteNote: (state, action) => {
-      state.notes = state.notes.filter((note) => note.id !== action.payload);
+      state.notes = state.notes.filter((note) => note.id !== action.payload.id);
     },
 
     editNote: (state, action) => {
       state.notes.forEach((note) => {
         if (note.id === action.payload.id) {
-          note.title = action.payload.newTitle;
-          note.description = action.payload.newDescription;
+          note.title = action.payload?.newTitle;
+          note.description = action.payload?.newDescription;
+          note.labelIds = action.payload?.newLabelIds;
         }
+      });
+    },
+
+    removeNoteLabel: (state, action) => {
+      state.notes = state.notes.map((note) => {
+        if (note.id === action.payload.id) {
+          return { ...note, labelIds: action.payload.filteredLabelIds };
+        }
+        return note;
       });
     },
   },
 });
 
-export const { createNote, deleteNote, editNote } = noteSlice.actions;
+export const { createNote, deleteNote, editNote, removeNoteLabel } =
+  noteSlice.actions;
 
 export default noteSlice.reducer;

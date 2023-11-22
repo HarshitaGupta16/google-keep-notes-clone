@@ -9,6 +9,10 @@ import Modal from "./common/Modal";
 const Body = () => {
   const [showCreateNote, setShowCreateNote] = useState(false);
   const [openModal, setOpenModal] = useState(false);
+  const [isFilterNotes, setIsFilterNotes] = useState(false);
+  const [clickedLabelId, setClickedLabelId] = useState("");
+  const [selectedLabelIds, setSelectedLabelIds] = useState([]);
+  const [isAddLabelsModalOpen, setIsAddLabelsModalOpen] = useState(false);
 
   const handleClick = () => {
     setShowCreateNote((showCreateNote) => !showCreateNote);
@@ -22,10 +26,20 @@ const Body = () => {
   return (
     <>
       <div style={{ display: "flex", height: "89vh" }}>
-        <LeftPanel setOpenModal={setOpenModal} openModal={openModal} />
+        <LeftPanel
+          setOpenModal={setOpenModal}
+          setIsFilterNotes={setIsFilterNotes}
+          setClickedLabelId={setClickedLabelId}
+        />
         <div style={{ width: "90%" }}>
           {showCreateNote ? (
-            <CreateNote handleClick={handleClick} />
+            <CreateNote
+              handleClick={handleClick}
+              selectedLabelIds={selectedLabelIds}
+              setSelectedLabelIds={setSelectedLabelIds}
+              isAddLabelsModalOpen={isAddLabelsModalOpen}
+              setIsAddLabelsModalOpen={setIsAddLabelsModalOpen}
+            />
           ) : (
             <div
               style={{
@@ -47,13 +61,41 @@ const Body = () => {
               flexWrap: "wrap",
             }}
           >
-            {notes?.map((note) => (
-              <DisplayNote note={note} key={note} />
-            ))}
+            {isFilterNotes
+              ? notes?.map((note) => {
+                  if (note?.labelIds?.includes(clickedLabelId)) {
+                    return (
+                      <DisplayNote
+                        note={note}
+                        key={note.id}
+                        isFilterNotes={isFilterNotes}
+                        selectedLabelIds={
+                          note?.labelIds?.length > 0 ? note.labelIds : []
+                        }
+                        setSelectedLabelIds={setSelectedLabelIds}
+                        isAddLabelsModalOpen={isAddLabelsModalOpen}
+                        setIsAddLabelsModalOpen={setIsAddLabelsModalOpen}
+                      />
+                    );
+                  }
+                })
+              : notes.map((note) => (
+                  <DisplayNote
+                    key={note.id}
+                    note={note}
+                    isFilterNotes={isFilterNotes}
+                    isAddLabelsModalOpen={isAddLabelsModalOpen}
+                    selectedLabelIds={
+                      note?.labelIds?.length > 0 ? note.labelIds : []
+                    }
+                    setSelectedLabelIds={setSelectedLabelIds}
+                    setIsAddLabelsModalOpen={setIsAddLabelsModalOpen}
+                  />
+                ))}
           </div>
         </div>
       </div>
-      {openModal && <Modal setOpenModal={setOpenModal} openModal={openModal} />}
+      {openModal && <Modal setOpenModal={setOpenModal} />}
     </>
   );
 };

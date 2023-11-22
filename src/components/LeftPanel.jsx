@@ -1,15 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 import "./LeftPanel.css";
 import LabelsList from "./LabelsList";
 
-const LeftPanel = ({ setOpenModal, openModal }) => {
+const LeftPanel = ({ setOpenModal, setIsFilterNotes, setClickedLabelId }) => {
   return (
     <>
       <div className="left-panel">
-        <button onClick={() => setOpenModal((openModal) => !openModal)}>
+        <button
+          onClick={() => setOpenModal((openModal) => !openModal)}
+          style={{ cursor: "pointer" }}
+        >
           Create Label
         </button>
-        <LabelsList />
+        <LabelsList
+          setIsFilterNotes={setIsFilterNotes}
+          setClickedLabelId={setClickedLabelId}
+        />
       </div>
     </>
   );

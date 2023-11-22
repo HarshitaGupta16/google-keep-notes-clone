@@ -14,17 +14,16 @@ const labelSlice = createSlice({
     createLabel: (state, action) => {
       const label = {
         id: nanoid(),
-        name: action.payload,
+        name: action.payload.name,
       };
       state.labels.push(label);
     },
     deleteLabel: (state, action) => {
       state.labels = state.labels.filter(
-        (label) => label.id !== action.payload
+        (label) => label.id !== action.payload.id
       );
     },
     editLabel: (state, action) => {
-      console.log(state);
       state.labels.forEach((label) => {
         if (label.id === action.payload.id) {
           label.name = action.payload.editedLabel;

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { createLabel } from "../../features/labelSlice";
 import SingleLabel from "../SingleLabel";
 
-const Modal = ({ openModal, setOpenModal }) => {
+const Modal = ({ setOpenModal }) => {
   const [label, setLabel] = useState("");
   const [showAddIcon, setShowAddIcon] = useState(false);
 
@@ -14,7 +14,7 @@ const Modal = ({ openModal, setOpenModal }) => {
   localStorage.setItem("labels", JSON.stringify(labels.map((label) => label)));
 
   const createLabelHandler = () => {
-    dispatch(createLabel(label));
+    dispatch(createLabel({ name: label }));
     setLabel("");
   };
 
@@ -32,6 +32,7 @@ const Modal = ({ openModal, setOpenModal }) => {
               className="label-input"
               onChange={(e) => setLabel(e.target.value)}
               value={label}
+              required
             />
             <button className="tick-icon" onClick={createLabelHandler}>
               ✔
@@ -45,7 +46,7 @@ const Modal = ({ openModal, setOpenModal }) => {
             <span style={{ color: "darkslategray" }}>Create new label</span>
           </div>
         )}
-        <div style={{ overflow: "auto", height: "60px" }}>
+        <div style={{ overflow: "auto", maxHeight: "100px" }}>
           {labels.map((item) => (
             <SingleLabel
               label={item}
