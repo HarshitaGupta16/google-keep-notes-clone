@@ -12,7 +12,6 @@ const Body = () => {
   const [isFilterNotes, setIsFilterNotes] = useState(false);
   const [clickedLabelId, setClickedLabelId] = useState("");
   const [selectedLabelIds, setSelectedLabelIds] = useState([]);
-  const [isAddLabelsModalOpen, setIsAddLabelsModalOpen] = useState(false);
 
   const handleClick = () => {
     setShowCreateNote((showCreateNote) => !showCreateNote);
@@ -37,8 +36,6 @@ const Body = () => {
               handleClick={handleClick}
               selectedLabelIds={selectedLabelIds}
               setSelectedLabelIds={setSelectedLabelIds}
-              isAddLabelsModalOpen={isAddLabelsModalOpen}
-              setIsAddLabelsModalOpen={setIsAddLabelsModalOpen}
             />
           ) : (
             <div
@@ -73,8 +70,6 @@ const Body = () => {
                           note?.labelIds?.length > 0 ? note.labelIds : []
                         }
                         setSelectedLabelIds={setSelectedLabelIds}
-                        isAddLabelsModalOpen={isAddLabelsModalOpen}
-                        setIsAddLabelsModalOpen={setIsAddLabelsModalOpen}
                       />
                     );
                   }
@@ -84,12 +79,10 @@ const Body = () => {
                     key={note.id}
                     note={note}
                     isFilterNotes={isFilterNotes}
-                    isAddLabelsModalOpen={isAddLabelsModalOpen}
                     selectedLabelIds={
                       note?.labelIds?.length > 0 ? note.labelIds : []
                     }
                     setSelectedLabelIds={setSelectedLabelIds}
-                    setIsAddLabelsModalOpen={setIsAddLabelsModalOpen}
                   />
                 ))}
           </div>

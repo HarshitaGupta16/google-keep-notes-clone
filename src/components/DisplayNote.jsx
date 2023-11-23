@@ -3,14 +3,9 @@ import "./DisplayNote.css";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteNote, editNote } from "../features/noteSlice";
 import AddLabelsOnNote from "./AddLabelsOnNote";
+import ColorPalette from "./ColorPalette";
 
-const DisplayNote = ({
-  note,
-  selectedLabelIds,
-  setSelectedLabelIds,
-  setIsAddLabelsModalOpen,
-  isAddLabelsModalOpen,
-}) => {
+const DisplayNote = ({ note, selectedLabelIds, setSelectedLabelIds }) => {
   const dispatch = useDispatch();
 
   const [isEdit, setIsEdit] = useState(false);
@@ -20,13 +15,15 @@ const DisplayNote = ({
   const [newLabelIds, setNewLabelIds] = useState(
     selectedLabelIds.length > 0 ? selectedLabelIds : []
   );
-  const [showAddLabelModalOnEdit, setShowAddLabelModalOnEdit] = useState(false);
+  const [isAddLabelsModalOpen, setIsAddLabelsModalOpen] = useState(false);
+  const [openColorPalette, setOpenColorPalette] = useState(false);
+  const [bgColor, setBgColor] = useState("");
 
   const labels = useSelector((state) => state.labels.labels);
 
   const editHandler = () => {
     const id = note.id;
-    dispatch(editNote({ id, newTitle, newDescription, newLabelIds }));
+    dispatch(editNote({ id, newTitle, newDescription, newLabelIds, bgColor }));
     setIsEdit((isEdit) => !isEdit);
   };
 
@@ -50,10 +47,24 @@ const DisplayNote = ({
   return (
     <div>
       {!isEdit ? (
-        <li className="note">
-          <h2>{note?.title}</h2>
-          <div className="note-description">{note?.description}</div>
-          <div style={{ display: "flex", flexWrap: "wrap" }}>
+        <li
+          className="note"
+          style={{ backgroundColor: note.bgColor ? note.bgColor : "white" }}
+        >
+          <h2
+            style={{ backgroundColor: note.bgColor ? note.bgColor : "white" }}
+          >
+            {note?.title}
+          </h2>
+          <div
+            className="note-description"
+            style={{ backgroundColor: note.bgColor ? note.bgColor : "white" }}
+          >
+            {note?.description}
+          </div>
+          <div
+            style={{ display: "flex", flexWrap: "wrap", position: "relative" }}
+          >
             {newLabelIds?.map((labelId) => {
               const label = labels.find((label) => label.id === labelId);
               return (
@@ -81,18 +92,25 @@ const DisplayNote = ({
           </div>
         </li>
       ) : (
-        <li className="note">
+        <li
+          className="note"
+          style={{ backgroundColor: bgColor ? bgColor : "white" }}
+        >
           <input
             value={newTitle}
             onChange={(e) => setNewTitle(e.target.value)}
             className="title"
+            style={{ backgroundColor: bgColor ? bgColor : "white" }}
           />
           <textarea
             value={newDescription}
             onChange={(e) => setNewDescription(e.target.value)}
             className="description"
+            style={{ backgroundColor: bgColor ? bgColor : "white" }}
           />
-          <div style={{ display: "flex", flexWrap: "wrap" }}>
+          <div
+            style={{ display: "flex", flexWrap: "wrap", position: "relative" }}
+          >
             {newLabelIds.map((labelId) => {
               const label = labels.find((label) => label.id === labelId);
               return (
@@ -128,19 +146,36 @@ const DisplayNote = ({
             <button
               className="edit-note"
               style={{ marginLeft: 10 }}
-              onClick={() =>
+              onClick={() => {
                 setIsAddLabelsModalOpen(
                   (isAddLabelsModalOpen) => !isAddLabelsModalOpen
-                )
-              }
+                );
+              }}
             >
               <i className="fa fa-plus"></i>
+            </button>
+            <button
+              className="edit-note"
+              onClick={() => setOpenColorPalette(true)}
+            >
+              <img
+                src="palette-solid.svg"
+                height={15}
+                width={15}
+                color="gray"
+              />
             </button>
             {isAddLabelsModalOpen && (
               <AddLabelsOnNote
                 selectedLabelIds={newLabelIds}
                 setSelectedLabelIds={handleSetSelectedLabelIds}
                 setIsAddLabelsModalOpen={setIsAddLabelsModalOpen}
+              />
+            )}
+            {openColorPalette && (
+              <ColorPalette
+                setBgColor={setBgColor}
+                setOpenColorPalette={setOpenColorPalette}
               />
             )}
           </div>

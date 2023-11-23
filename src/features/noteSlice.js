@@ -18,6 +18,7 @@ export const noteSlice = createSlice({
         title: action.payload.title,
         description: action.payload.description,
         labelIds: action.payload?.selectedLabelIds,
+        bgColor: action.payload?.bgColor,
       };
       state.notes.push(note);
     },
@@ -32,6 +33,7 @@ export const noteSlice = createSlice({
           note.title = action.payload?.newTitle;
           note.description = action.payload?.newDescription;
           note.labelIds = action.payload?.newLabelIds;
+          note.bgColor = action.payload?.bgColor;
         }
       });
     },
