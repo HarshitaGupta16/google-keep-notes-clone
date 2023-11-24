@@ -5,3 +5,16 @@
   padding: 20px;
   margin: 0;
 }
+
+.create-label-btn {
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  color: darkslategray;
+  font-weight: bold;
+  background-color: #b4ddd3;
+}
+
+.create-label-btn:hover {
+  background-color: #c7f1e7;
+}

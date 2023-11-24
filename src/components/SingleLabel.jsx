@@ -35,7 +35,6 @@ const SingleLabel = ({ label, setShowAddIcon }) => {
         className="list-icon"
         onMouseEnter={() => setShowDeleteNote(true)}
         onMouseLeave={() =>
-          !showDeleteNote &&
           setShowDeleteNote((showDeleteNote) => !showDeleteNote)
         }
       >

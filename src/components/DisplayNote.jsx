@@ -52,13 +52,20 @@ const DisplayNote = ({ note, selectedLabelIds, setSelectedLabelIds }) => {
           style={{ backgroundColor: note.bgColor ? note.bgColor : "white" }}
         >
           <h2
-            style={{ backgroundColor: note.bgColor ? note.bgColor : "white" }}
+            style={{
+              backgroundColor: note.bgColor ? note.bgColor : "white",
+              margin: 0,
+              marginBottom: 10,
+            }}
           >
             {note?.title}
           </h2>
           <div
             className="note-description"
-            style={{ backgroundColor: note.bgColor ? note.bgColor : "white" }}
+            style={{
+              backgroundColor: note.bgColor ? note.bgColor : "white",
+              margin: 10,
+            }}
           >
             {note?.description}
           </div>
@@ -94,19 +101,19 @@ const DisplayNote = ({ note, selectedLabelIds, setSelectedLabelIds }) => {
       ) : (
         <li
           className="note"
-          style={{ backgroundColor: bgColor ? bgColor : "white" }}
+          style={{ backgroundColor: bgColor ? bgColor : note.bgColor }}
         >
           <input
             value={newTitle}
             onChange={(e) => setNewTitle(e.target.value)}
             className="title"
-            style={{ backgroundColor: bgColor ? bgColor : "white" }}
+            style={{ backgroundColor: bgColor ? bgColor : note.bgColor }}
           />
           <textarea
             value={newDescription}
             onChange={(e) => setNewDescription(e.target.value)}
             className="description"
-            style={{ backgroundColor: bgColor ? bgColor : "white" }}
+            style={{ backgroundColor: bgColor ? bgColor : note.bgColor }}
           />
           <div
             style={{ display: "flex", flexWrap: "wrap", position: "relative" }}

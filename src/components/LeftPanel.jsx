@@ -9,6 +9,7 @@ const LeftPanel = ({ setOpenModal, setIsFilterNotes, setClickedLabelId }) => {
         <button
           onClick={() => setOpenModal((openModal) => !openModal)}
           style={{ cursor: "pointer" }}
+          className="create-label-btn"
         >
           Create Label
         </button>

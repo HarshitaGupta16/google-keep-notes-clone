@@ -24,7 +24,7 @@ const Body = () => {
 
   return (
     <>
-      <div style={{ display: "flex", height: "89vh" }}>
+      <div style={{ display: "flex", height: "83vh" }}>
         <LeftPanel
           setOpenModal={setOpenModal}
           setIsFilterNotes={setIsFilterNotes}
